@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+tia gorda dulces
+</name>
+</assembly>
+<members>
+<member name="T:tia_gorda_dulces.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
+<member name="P:tia_gorda_dulces.My.Resources.Resources.ResourceManager">
+<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member>
+<member name="P:tia_gorda_dulces.My.Resources.Resources.Culture">
+<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member>
+<member name="P:tia_gorda_dulces.My.Resources.Resources.Cadena_Conexion">
+<summary>
+  Busca una cadena traducida similar a Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\dbTiagorda.accdb;Persist Security Info=False;.
+</summary>
+</member>
+<member name="M:tia_gorda_dulces.clsStock.Datos(System.Int32,System.String,System.Int32,System.String)">
+ <summary>
+ Devuelve los datos de la vista vw_Stock
+ </summary>
+ <param name="Id">Id del registro</param>
+ <param name="Id_Producto">Codigo de producto</param>
+ <param name="Nombre">Nombre del producto</param>
+ <returns></returns>
+</member>
+<member name="M:tia_gorda_dulces.Herramientas.Codigo_Seleccionado(System.String)">
+ <summary>
+ Devuelve el Valor en una cadena con formato #. Texto
+ </summary>
+ <param name="s">Cadena a evaluar</param>
+ <returns>Integer</returns>
+</member>
+<member name="M:tia_gorda_dulces.Herramientas.Nombre_Seleccionado(System.String)">
+ <summary>
+ Devuelve el Nombre en una cadena con formato #. Texto
+ </summary>
+ <param name="s">Cadena a evaluar</param>
+ <returns>String</returns>
+</member>
+</members>
+</doc>

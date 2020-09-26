@@ -79,6 +79,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\clsClientes.vb" />
+    <Compile Include="clases\clsHistorial.vb" />
+    <Compile Include="clases\clsProductos.vb" />
+    <Compile Include="clases\clsStock.vb" />
+    <Compile Include="Clientes\frmClientes.Designer.vb">
+      <DependentUpon>frmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Herramientas\Herramientas.vb" />
+    <Compile Include="Historial\frmHistorial.Designer.vb">
+      <DependentUpon>frmHistorial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Historial\frmHistorial.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\SpeedGrilla.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -104,6 +121,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Productos\frmProductos.Designer.vb">
+      <DependentUpon>frmProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\frmProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock\frmStock.Designer.vb">
+      <DependentUpon>frmStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Stock\frmStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -120,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\frmProductos.resx">
+      <DependentUpon>frmProductos.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +171,14 @@
       <Project>{64f92811-4680-4543-a345-0f68983286e2}</Project>
       <Name>SpeedGrilla</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbTiagorda.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controles\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
