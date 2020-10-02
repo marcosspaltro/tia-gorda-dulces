@@ -1,7 +1,7 @@
 ﻿Public Class clsProductos
 
 #Region " Devolver Datos "
-    Public Function Datos(ByVal Optional Id As Integer = 0, ByVal Optional Nombre As String = "") As DataTable
+    Public Function Datos(ByVal Optional Id As Integer = 0, ByVal Optional Nombre As String = "", ByVal Optional precio As Integer = 0) As DataTable
         Dim vFiltro As String = ""
 
         If Id <> 0 Then
@@ -13,6 +13,8 @@
         If vFiltro.Length Then vFiltro = " WHERE " & vFiltro
 
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
+        Dim dc As New OleDb.OleDbCommand($"UPDATE Productos SET nombre={Nombre}, precioxunidad = {precio}
+                                            WHERE ID={Id}", db)
         Dim dat As New OleDb.OleDbDataAdapter("SELECT * FROM Productos" & vFiltro, db)
 
         Dim dt As New DataTable("Datos")
@@ -37,17 +39,17 @@
 #End Region
 
 #Region " Editar Datos"
-    Public Sub Agregar(ByVal nombre_Nuevo As String)
+    Public Sub Agregar(ByVal nombre_Nuevo As String, ByVal precio As Integer)
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Productos (Nombre) VALUES('{nombre_Nuevo}') ", db)
+        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Productos (Nombre, precioxunidad) VALUES('{nombre_Nuevo}', '{precio}') ", db)
         db.Open()
         dc.ExecuteNonQuery()
         db.Close()
     End Sub
 
-    Public Sub Editar(ByVal id As Integer, ByVal Nombre_Nuevo As String)
+    Public Sub Editar(ByVal id As Integer, ByVal Nombre_Nuevo As String, ByVal precio As Integer)
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dc As New OleDb.OleDbCommand($"UPDATE Productos SET Nombre='{Nombre_Nuevo}' WHERE ID={id} ", db)
+        Dim dc As New OleDb.OleDbCommand($"UPDATE Productos SET Nombre='{Nombre_Nuevo}', precioxunidad = {precio} WHERE ID={id} ", db)
         db.Open()
         dc.ExecuteNonQuery()
         db.Close()

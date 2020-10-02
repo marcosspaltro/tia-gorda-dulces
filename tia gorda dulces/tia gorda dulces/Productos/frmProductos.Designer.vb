@@ -59,13 +59,13 @@ Partial Class frmProductos
         Me.grdProductos.Redraw = True
         Me.grdProductos.Row = 0
         Me.grdProductos.Rows = 50
-        Me.grdProductos.Size = New System.Drawing.Size(776, 400)
+        Me.grdProductos.Size = New System.Drawing.Size(851, 440)
         Me.grdProductos.TabIndex = 0
         '
         'txtProductos
         '
         Me.txtProductos.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.txtProductos.Location = New System.Drawing.Point(13, 418)
+        Me.txtProductos.Location = New System.Drawing.Point(13, 458)
         Me.txtProductos.Name = "txtProductos"
         Me.txtProductos.Size = New System.Drawing.Size(231, 20)
         Me.txtProductos.TabIndex = 1
@@ -74,7 +74,7 @@ Partial Class frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(875, 490)
         Me.Controls.Add(Me.txtProductos)
         Me.Controls.Add(Me.grdProductos)
         Me.Name = "frmProductos"

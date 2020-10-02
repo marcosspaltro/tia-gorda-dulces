@@ -30,23 +30,50 @@ Public Class frmProductos
     End Sub
 
     Private Sub grdProductos_Editado(f As Short, c As Short, a As Object) Handles grdProductos.Editado
-        Dim vId As Integer = grdProductos.Texto(f, grdProductos.ColIndex("Id"))
+        With grdProductos
+            Dim vId As Integer = grdProductos.Texto(f, grdProductos.ColIndex("Id"))
+            Dim vNombre As String
+            Dim vPrecio As integer
+            vNombre = .Texto(f, .ColIndex("Nombre"))
+            vPrecio = .Texto(f, .ColIndex("precioxunidad"))
 
-        grdProductos.Texto(f, c) = a
-        If grdProductos.Texto(f, c) = "" Then
-            grdProductos.ErrorEnTxt()
-        Else
-            If grdProductos.EsUltimaF Then
-                clProd.Agregar(a)
-                grdProductos.Texto(f, grdProductos.ColIndex("Id")) = clProd.Max_Id
-                grdProductos.AgregarFila()
-                grdProductos.ActivarCelda(f + 1, c)
-            Else
-                grdProductos.Texto(f, c) = a
-                clProd.Editar(vId, a)
-                grdProductos.ActivarCelda(f + 1, c)
-            End If
-        End If
+            Select Case c
+
+                Case .ColIndex("nombre")
+                    If .EsUltimaF Then
+                        .Texto(f, c) = a
+                        .ActivarCelda(f, .ColIndex("precioxunidad"))
+                    Else
+                        .Texto(f, c) = a
+                        clProd.Editar(vId, a, vPrecio)
+                        .ActivarCelda(f + 1, c)
+                    End If
+
+                Case .ColIndex("precioxunidad")
+                    .Texto(f, c) = a
+                    If .Texto(f, c) < 0 Then
+                        .ErrorEnTxt()
+                    Else
+                        If .EsUltimaF Then
+                            If .Texto(f, .ColIndex("Nombre")) = "" Then
+
+                                .ActivarCelda(f, .ColIndex("Nombre"))
+                            Else
+                                clProd.Agregar(vNombre, a)
+                                grdProductos.Texto(f, grdProductos.ColIndex("Id")) = clProd.Max_Id
+                                    .AgregarFila()
+                                .ActivarCelda(f + 1, .ColIndex("Nombre"))
+
+
+                            End If
+                        Else
+                            clProd.Editar(vId, vNombre, a)
+                            .ActivarCelda(f + 1, .ColIndex("precioxunidad"))
+                        End If
+                    End If
+            End Select
+        End With
+
     End Sub
     Private Sub grdProductos_KeyUp(sender As Object, e As Short) Handles grdProductos.KeyUp
         Select Case e
