@@ -23,3 +23,5 @@ C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulc
 C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia gorda dulces.pdb
 C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.frmProductos.resources
 C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\bin\Debug\dbTiagorda.accdb
+C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.ucRecetas.resources
+C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.frmStock.resources

@@ -42,12 +42,10 @@ Public Class frmClientes
             Select Case c
 
                 Case .ColIndex("Nombre")
-                    If Not .Texto(f, c) = "" Then
-                        .Texto(f, c) = a
-
+                    .Texto(f, c) = a
+                    If .EsUltimaF Then
                         .ActivarCelda(f, .ColIndex("Dirección"))
                     Else
-                        .Texto(f, c) = a
                         clCli.Editar(vId, a, vDirección, vCelular, vInstagram)
                         .ActivarCelda(f, .ColIndex("Dirección"))
                     End If

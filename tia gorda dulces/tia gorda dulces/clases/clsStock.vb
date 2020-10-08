@@ -5,9 +5,9 @@
 
 #Region " Editar Datos "
 
-    Public Sub Agregar(Id_Producto As Integer, Reserva As Integer)
+    Public Sub Agregar(Ingrediente As String, Precioxunidad As Integer, Cantidadxunidad As Integer, Stock As Integer, Lugardecompra As String)
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Stock (Fecha, Id_Producto, Reserva) VALUES('{Id_Producto}','{Reserva}')", db)
+        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Stock (Ingrediente, Precioxunidad, Cantidadxunidad, Stock, Lugardecompra) VALUES('{Ingrediente}','{Precioxunidad}','{Cantidadxunidad}','{Stock}','{Lugardecompra}')", db)
 
         db.Open()
 
@@ -16,11 +16,11 @@
         db.Close()
     End Sub
 
-    Public Sub Editar(ByVal Id As Integer, ByVal Fecha As Date, Id_Producto As Integer, Reserva As Integer)
+    Public Sub Editar(ByVal Id As Integer, ByVal Ingrediente As String, Precioxunidad As Integer, Cantidadxunidad As Integer, ByVal Stock As Integer, ByVal Lugardecompra As String)
         If Id <> 0 Then
             'Solo ejecutar si hay un Id 
             Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-            Dim dc As New OleDb.OleDbCommand($"UPDATE Stock SET Fecha='{Fecha.ToString("MM/dd/yy")}', Id_Producto={Id_Producto}, Reserva={Reserva}
+            Dim dc As New OleDb.OleDbCommand($"UPDATE Stock SET Ingrediente='{Ingrediente}', Precioxunidad='{Precioxunidad}', Cantidadxunidad='{Cantidadxunidad}', Stock='{Stock}', Lugardecompra='{Lugardecompra}'
                                             WHERE ID={Id}", db)
 
             db.Open()
@@ -70,7 +70,7 @@
         End If
         If vFiltro.Length Then vFiltro = " WHERE " & vFiltro
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dat As New OleDb.OleDbDataAdapter("SELECT * FROM vw_Stock" & vFiltro, db)
+        Dim dat As New OleDb.OleDbDataAdapter("SELECT * FROM Stock" & vFiltro, db)
         Dim dt As New DataTable("Datos")
         dat.Fill(dt)
 
