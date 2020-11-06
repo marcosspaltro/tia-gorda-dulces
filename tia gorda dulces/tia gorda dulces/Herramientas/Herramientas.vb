@@ -46,7 +46,27 @@
             lst.Items.Add(String.Format("{0}. {1}", f.Item(0), f.Item(1).ToString.Trim))
         Next
     End Sub
+    Public Sub Llenar_combobox(ByRef lst As ComboBox, ByVal Tabla As String, Optional ByVal ID As String = "", Optional ByVal Nombre As String = "", Optional ByVal Where As String = "", Optional ByVal Order As String = "")
+        If Where.Length Then Where = " WHERE " & Where
+        If Order.Length = 0 Then Order = ID
 
+
+        Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
+        Dim dt As New DataTable("Datos")
+
+        Dim cadena As String = String.Format("SELECT {0}, {1} FROM {2} {3} ORDER BY {4}", ID, Nombre, Tabla, Where, Order)
+
+        If ID.Length = 0 Then
+            cadena = "SELECT * FROM " & Tabla & Where
+        End If
+
+        Dim dat As New OleDb.OleDbDataAdapter(cadena, db)
+        dat.Fill(dt)
+
+        For Each f As DataRow In dt.Rows
+            lst.Items.Add(String.Format("{0}. {1}", f.Item(0), f.Item(1).ToString.Trim))
+        Next
+    End Sub
     'Public Sub Llenar_List(ByRef lst As ComboBox, ByVal Tabla As String, Optional ByVal ID As String = "", Optional ByVal Nombre As String = "", Optional ByVal Where As String = "", Optional ByVal Order As String = "")
     '    If Where.Length Then Where = " WHERE " & Where
     '    If Order.Length = 0 Then Order = ID

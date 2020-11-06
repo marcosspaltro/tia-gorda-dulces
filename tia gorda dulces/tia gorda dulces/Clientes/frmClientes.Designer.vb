@@ -59,7 +59,7 @@ Partial Class frmClientes
         Me.grdClientes.Redraw = True
         Me.grdClientes.Row = 0
         Me.grdClientes.Rows = 50
-        Me.grdClientes.Size = New System.Drawing.Size(776, 400)
+        Me.grdClientes.Size = New System.Drawing.Size(751, 400)
         Me.grdClientes.TabIndex = 0
         '
         'txtClientes
@@ -74,7 +74,7 @@ Partial Class frmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(775, 450)
         Me.Controls.Add(Me.txtClientes)
         Me.Controls.Add(Me.grdClientes)
         Me.Name = "frmClientes"

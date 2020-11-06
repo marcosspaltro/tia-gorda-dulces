@@ -119,7 +119,7 @@ Public Class frmClientes
             Case 46
                 'Tecla Borrar/Delete
                 If grdClientes.Texto(, 0) <> 0 Then
-                    If MsgBox($"¿Esta seguro de borrar el Cliucto {grdClientes.Texto(, 0)}. {grdClientes.Texto(, 1)}?",
+                    If MsgBox($"¿Esta seguro de borrar el Cliente {grdClientes.Texto(, 0)}. {grdClientes.Texto(, 1)}?",
                           MsgBoxStyle.YesNoCancel + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Critical, "Borrar") = MsgBoxResult.Yes Then
                         'Borrar el registro
                         clCli.Borrar(grdClientes.Texto(, 0))
