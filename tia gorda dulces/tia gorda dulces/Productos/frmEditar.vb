@@ -2,6 +2,9 @@
     Private clRecetas As New clsRecetas
     Private Sub frmEditar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Llenar_combobox(ComboBox1, "stock")
+        Dim vTeclas() As Integer = {46}
+
+        grdEditar.TeclasManejadas = vTeclas
     End Sub
     Private Sub Cargar_LST()
 
@@ -58,17 +61,14 @@
     Private Sub grdEditar_KeyUp(sender As Object, e As Short) Handles grdEditar.KeyUp
         Select Case e
             Case 46
-                'Tecla Borrar/Delete preguntar a nico por que verga no funca
                 If grdEditar.Texto(, grdEditar.ColIndex("id")) <> 0 Then
                     If MsgBox($"¿Esta seguro de borrar el ingrediente {grdEditar.Texto(, 0)}. {grdEditar.Texto(, 1)}?",
-                          MsgBoxStyle.YesNoCancel + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Critical, "Borrar") = MsgBoxResult.Yes Then
+                  MsgBoxStyle.YesNoCancel + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Critical, "Borrar") = MsgBoxResult.Yes Then
                         'Borrar el registro
-                        clRecetas.Borrar(grdEditar.Texto(, 0))
+                        clRecetas.Borrar(grdEditar.Texto(, grdEditar.ColIndex("id")))
                         grdEditar.BorrarFila()
                     End If
                 End If
-            Case 32
-                'Barra Espaciadora
         End Select
     End Sub
     Private Sub cargar_grd(ByVal fila As Int16)
@@ -92,6 +92,19 @@
                 clRecetas.Borrar(grdEditar.Texto(, grdEditar.ColIndex("id")))
                 grdEditar.BorrarFila()
             End If
+        End If
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub btnAñadir_Click(sender As Object, e As EventArgs) Handles btnAñadir.Click
+        If Not ComboBox1.Text = "" Then
+            Dim id As String = ComboBox1.Text.Substring(0, ComboBox1.Text.IndexOf(".") - 1)
+            grdEditar.Texto(grdEditar.Filas.Count, grdEditar.ColIndex("id_ingrediente")) = ComboBox1.Text
+            grdEditar.Texto(grdEditar.Filas.Count, grdEditar.ColIndex("cantidad")) = txtCantidad.Text
+            grdEditar.AgregarFila()
         End If
     End Sub
 End Class

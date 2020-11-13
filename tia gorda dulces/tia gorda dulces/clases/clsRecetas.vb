@@ -57,7 +57,7 @@ Public Class ClsRecetas
 
     Public Sub Borrar(ByVal Id As Integer)
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dc As New OleDb.OleDbCommand("DELETE FROM vw_Recetas WHERE ID = " & Id, db)
+        Dim dc As New OleDb.OleDbCommand("DELETE FROM Recetas WHERE ID = " & Id, db)
         db.Open()
         dc.ExecuteNonQuery()
         db.Close()
