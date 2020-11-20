@@ -1,7 +1,7 @@
 ﻿Public Class frmEditar
     Private clRecetas As New clsRecetas
     Private Sub frmEditar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Llenar_combobox(ComboBox1, "stock")
+        Llenar_combobox(cbIngrediente, "stock")
         Dim vTeclas() As Integer = {46}
 
         grdEditar.TeclasManejadas = vTeclas
@@ -19,8 +19,8 @@
 
     Private Sub grdEditar_Editado(f As Short, c As Short, a As Object) Handles grdEditar.Editado
         With grdEditar
-            Dim vId As Integer = grdEditar.Texto(f, grdEditar.ColIndex("Id"))
-            Dim vId_prod As Integer = grdEditar.Texto(f, grdEditar.ColIndex("Id_producto"))
+            Dim vId As Integer = grdEditar.Texto(f, .ColIndex("Id"))
+            Dim vId_prod As Integer = grdEditar.Texto(f, .ColIndex("Id_producto"))
             Dim vid_ingrediente As Integer = .Texto(f, .ColIndex("id_ingrediente"))
             Dim vcantidad As Integer = .Texto(f, .ColIndex("cantidad"))
 
@@ -30,7 +30,6 @@
                     If .EsUltimaF Then
                         .Texto(f, c) = a
                         .ActivarCelda(f, .ColIndex("id_ingrediente"))
-                        .Texto(f, .ColIndex("id_Producto")) = frmProductos.lblindex.Text
                     Else
                         .Texto(f, c) = a
                         clRecetas.Editar(vId, vId_prod, a, vid_ingrediente)
@@ -40,12 +39,12 @@
                 Case .ColIndex("id_Ingrediente")
                     If .EsUltimaF Then
                         .Texto(f, c) = a
+                        .Texto(f, .ColIndex("id_Producto")) = frmProductos.lblindex.Text
                         clRecetas.Agregar(vcantidad, vId_prod, a)
                         .AgregarFila()
                         .ActivarCelda(f + 1, .ColIndex("cantidad"))
                         cargar_grd(f)
-                        frmProductos.grdProductos.Siguiente_Fila()
-                        frmProductos.grdProductos.Anterior_Fila()
+                        frmProductos.recargarlst()
                     Else
                         .Texto(f, c) = a
                         clRecetas.Editar(vId, vId_prod, vcantidad, a)
@@ -100,11 +99,25 @@
     End Sub
 
     Private Sub btnAñadir_Click(sender As Object, e As EventArgs) Handles btnAñadir.Click
-        If Not ComboBox1.Text = "" Then
-            Dim id As String = ComboBox1.Text.Substring(0, ComboBox1.Text.IndexOf(".") - 1)
-            grdEditar.Texto(grdEditar.Filas.Count, grdEditar.ColIndex("id_ingrediente")) = ComboBox1.Text
-            grdEditar.Texto(grdEditar.Filas.Count, grdEditar.ColIndex("cantidad")) = txtCantidad.Text
+        If Not cbIngrediente.Text = "" Then
+            Dim id As String = cbIngrediente.Text.Substring(0, cbIngrediente.Text.IndexOf("."))
+            Dim f As Integer = grdEditar.Filas.Count - 1
+            grdEditar.Texto(f, grdEditar.ColIndex("id_ingrediente")) = id
+            grdEditar.Texto(f, grdEditar.ColIndex("cantidad")) = txtCantidad.Text
+            grdEditar.Texto(f, grdEditar.ColIndex("Id_producto")) = frmProductos.lblindex.Text
+            Dim vId_prod As Integer = grdEditar.Texto(f, grdEditar.ColIndex("Id_producto"))
+            Dim vid_ingrediente As Integer = grdEditar.Texto(grdEditar.Filas.Count - 1, grdEditar.ColIndex("id_ingrediente"))
+            Dim vcantidad As Integer = grdEditar.Texto(grdEditar.Filas.Count - 1, grdEditar.ColIndex("cantidad"))
+            clRecetas.Agregar(vcantidad, vId_prod, vid_ingrediente)
             grdEditar.AgregarFila()
+            cbIngrediente.Text = ""
+            txtCantidad.Text = ""
+            cargar_grd(f)
+            frmProductos.recargarlst()
         End If
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

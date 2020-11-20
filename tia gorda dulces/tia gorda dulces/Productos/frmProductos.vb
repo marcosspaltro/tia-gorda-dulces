@@ -149,4 +149,8 @@ Public Class frmProductos
             End With
         End If
     End Sub
+    Public Sub recargarlst()
+        grdProductos.Siguiente_Fila()
+        grdProductos.Anterior_Fila()
+    End Sub
 End Class
