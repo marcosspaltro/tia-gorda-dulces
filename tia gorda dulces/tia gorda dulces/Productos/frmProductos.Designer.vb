@@ -111,7 +111,7 @@ Partial Class frmProductos
         '
         Me.lblindex.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblindex.AutoSize = True
-        Me.lblindex.Location = New System.Drawing.Point(1141, 414)
+        Me.lblindex.Location = New System.Drawing.Point(1103, 355)
         Me.lblindex.Name = "lblindex"
         Me.lblindex.Size = New System.Drawing.Size(0, 13)
         Me.lblindex.TabIndex = 5

@@ -64,5 +64,20 @@ Public Class ClsRecetas
 
     End Sub
 
+    Public Function Nombre_Ingrediente(ByVal Id As Integer) As String
+        Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
+        Dim dc As New OleDb.OleDbCommand("SELECT Ingrediente FROM vw_Recetas WHERE Id_Ingrediente=" & Id, db)
+
+        db.Open()
+
+        Dim s As Object
+        s = dc.ExecuteScalar()
+
+        If IsNothing(s) Then s = ""
+
+        db.Close()
+        Return s
+    End Function
+
 #End Region
 End Class

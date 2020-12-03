@@ -37,21 +37,31 @@
                     End If
 
                 Case .ColIndex("id_Ingrediente")
+                    Dim vNombre As String = clRecetas.Nombre_Ingrediente(a)
                     If .EsUltimaF Then
-                        .Texto(f, c) = a
-                        .Texto(f, .ColIndex("id_Producto")) = frmProductos.lblindex.Text
-                        clRecetas.Agregar(vcantidad, vId_prod, a)
-                        .AgregarFila()
-                        .ActivarCelda(f + 1, .ColIndex("cantidad"))
-                        cargar_grd(f)
-                        frmProductos.recargarlst()
+                        If vNombre.Length Then
+                            .Texto(f, c) = a
+                            .Texto(f, grdEditar.ColIndex("Id_producto")) = frmProductos.lblindex.Text
+                            vId_prod = .Texto(f, .ColIndex("id_producto"))
+                            clRecetas.Agregar(vcantidad, vId_prod, a)
+                            .AgregarFila()
+                            .ActivarCelda(f + 1, .ColIndex("cantidad"))
+                            cargar_grd(f)
+                            frmProductos.recargarlst()
+                        Else
+                            .ErrorEnTxt()
+                        End If
                     Else
-                        .Texto(f, c) = a
-                        clRecetas.Editar(vId, vId_prod, vcantidad, a)
-                        .ActivarCelda(f + 1, .ColIndex("cantidad"))
-                        cargar_grd(f)
-                        frmProductos.grdProductos.Siguiente_Fila()
-                        frmProductos.grdProductos.Anterior_Fila()
+                        If vNombre.Length Then
+                            .Texto(f, c) = a
+                            clRecetas.Editar(vId, vId_prod, vcantidad, a)
+                            .ActivarCelda(f + 1, .ColIndex("cantidad"))
+                            cargar_grd(f)
+                            frmProductos.grdProductos.Siguiente_Fila()
+                            frmProductos.grdProductos.Anterior_Fila()
+                        Else
+                            .ErrorEnTxt()
+                        End If
                     End If
 
             End Select
