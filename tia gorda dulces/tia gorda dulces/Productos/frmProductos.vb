@@ -153,4 +153,8 @@ Public Class frmProductos
         grdProductos.Siguiente_Fila()
         grdProductos.Anterior_Fila()
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        llenarExcel(grdProductos)
+    End Sub
 End Class
