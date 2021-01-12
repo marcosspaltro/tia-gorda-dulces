@@ -103,9 +103,9 @@
 
             ' ¿Cuantas columnas y cuantas filas?
 
-            Dim NCol As Integer = ElGrid.ColumnCount
+            Dim NCol As Integer = ElGrid.Columnas.Count
 
-            Dim NRow As Integer = ElGrid.RowCount
+            Dim NRow As Integer = ElGrid.Filas.Count
 
             'Aqui recorremos todas las filas, y por cada fila todas las columnas
 
@@ -113,7 +113,7 @@
 
             For i As Integer = 1 To NCol
 
-                exHoja.Cells.Item(1, i) = ElGrid.Columns(i - 1).Name.ToString
+                exHoja.Cells.Item(1, i) = ElGrid.Columnas(i - 1).Name.ToString
 
             Next
 
@@ -121,7 +121,7 @@
 
                 For Col As Integer = 0 To NCol - 1
 
-                    exHoja.Cells.Item(Fila + 2, Col + 1) = ElGrid.Item(Col, Fila).Value
+                    exHoja.Cells.Item(Fila + 2, Col + 1) = ElGrid.Texto(Col, Fila).Value
 
                 Next
 

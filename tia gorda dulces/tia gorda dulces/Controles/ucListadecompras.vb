@@ -16,4 +16,12 @@
 
         End With
     End Sub
+
+    Private Sub grdldc_Load(sender As Object, e As EventArgs) Handles grdldc.Load
+
+    End Sub
+
+    Private Sub lstLdc_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstLdc.SelectedIndexChanged
+
+    End Sub
 End Class

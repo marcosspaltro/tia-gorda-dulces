@@ -167,4 +167,8 @@ Public Class frmStock
     Private Sub txtStock_TextChanged(sender As Object, e As EventArgs) Handles txtStock.TextChanged
         Cargar_LST()
     End Sub
+
+    Private Sub btnCompra_Click(sender As Object, e As EventArgs) Handles btnCompra.Click
+        frmLDC.Show()
+    End Sub
 End Class

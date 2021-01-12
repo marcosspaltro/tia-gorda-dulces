@@ -5,9 +5,9 @@
 
 #Region " Editar Datos "
 
-    Public Sub Agregar(Ingrediente As String, Precioxunidad As Integer, Cantidadxunidad As Integer, Stock As Integer, Lugardecompra As String)
+    Public Sub Agregar(Id_ingrediente As Integer, Unidades As Integer)
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Stock (Ingrediente, Precioxunidad, Cantidadxunidad, Stock, Lugardecompra) VALUES('{Ingrediente}','{Precioxunidad}','{Cantidadxunidad}','{Stock}','{Lugardecompra}')", db)
+        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Compras (Id_ingrediente, Unidades) VALUES('{Id_ingrediente}','{Unidades}')", db)
 
         db.Open()
 
@@ -16,12 +16,11 @@
         db.Close()
     End Sub
 
-    Public Sub Editar(ByVal Id As Integer, ByVal Ingrediente As String, Precioxunidad As Integer, Cantidadxunidad As Integer, ByVal Stock As Integer, ByVal Lugardecompra As String)
+    Public Sub Editar(ByVal Id As Integer, Id_ingrediente As Integer, Unidades As Integer)
         If Id <> 0 Then
             'Solo ejecutar si hay un Id 
             Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-            Dim dc As New OleDb.OleDbCommand($"UPDATE Stock SET Ingrediente='{Ingrediente}', Precioxunidad='{Precioxunidad}', Cantidadxunidad='{Cantidadxunidad}', Stock='{Stock}', Lugardecompra='{Lugardecompra}'
-                                            WHERE ID={Id}", db)
+            Dim dc As New OleDb.OleDbCommand($"UPDATE Compras SET Id_ingrediente='{Id_ingrediente}', Unidades='{Unidades}' WHERE ID={Id} ", db)
 
             db.Open()
 
@@ -29,6 +28,14 @@
 
             db.Close()
         End If
+    End Sub
+    Public Sub Borrar(ByVal Id As Integer)
+        Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
+        Dim dc As New OleDb.OleDbCommand("DELETE FROM Compras WHERE ID =" & Id, db)
+        db.Open()
+        dc.ExecuteNonQuery()
+        db.Close()
+
     End Sub
 #End Region
 #Region " Devolver Datos "
@@ -55,6 +62,18 @@
         dat.Fill(dt)
 
         Return dt
+    End Function
+    Public Function Max_Id() As Integer
+        Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
+        Dim cm As New OleDb.OleDbCommand("SELECT MAX(Id) FROM Clientes", db)
+
+        Dim d As Object = Nothing
+
+        cm.CommandType = CommandType.Text
+        db.Open()
+        d = cm.ExecuteScalar()
+
+        Return CInt(d)
     End Function
 
 #End Region

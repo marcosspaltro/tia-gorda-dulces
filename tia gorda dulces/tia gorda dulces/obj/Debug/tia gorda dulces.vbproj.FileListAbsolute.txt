@@ -28,3 +28,5 @@ C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulc
 C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.frmClientes.resources
 C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.ucListadecompras.resources
 C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.frmEditar.resources
+C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia gorda dulces.vbproj.ResolveComReference.cache
+C:\Users\marco\Documents\github\tia-gorda-dulces\tia gorda dulces\tia gorda dulces\obj\Debug\tia_gorda_dulces.frmLDC.resources

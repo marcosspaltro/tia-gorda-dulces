@@ -64,8 +64,6 @@ Public Class frmProductos
                                 grdProductos.Texto(f, grdProductos.ColIndex("Id")) = clProd.Max_Id
                                 .AgregarFila()
                                 .ActivarCelda(f + 1, .ColIndex("Nombre"))
-
-
                             End If
                         Else
                             clProd.Editar(vId, vNombre, a)
@@ -154,7 +152,6 @@ Public Class frmProductos
         grdProductos.Anterior_Fila()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        llenarExcel(grdProductos)
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
     End Sub
 End Class
