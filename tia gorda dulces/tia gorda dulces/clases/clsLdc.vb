@@ -5,9 +5,9 @@
 
 #Region " Editar Datos "
 
-    Public Sub Agregar(Id_ingrediente As Integer, Unidades As Integer)
+    Public Sub Agregar(Id_ingrediente As Integer, Unidades As Integer, Total As Integer)
         Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Compras (Id_ingrediente, Unidades) VALUES('{Id_ingrediente}','{Unidades}')", db)
+        Dim dc As New OleDb.OleDbCommand($"INSERT INTO Compras (Id_ingrediente, Unidades, Total) VALUES('{Id_ingrediente}','{Unidades}','{Total}')", db)
 
         db.Open()
 
@@ -16,11 +16,11 @@
         db.Close()
     End Sub
 
-    Public Sub Editar(ByVal Id As Integer, Id_ingrediente As Integer, Unidades As Integer)
+    Public Sub Editar(ByVal Id As Integer, Id_ingrediente As Integer, Unidades As Integer, Total As Integer)
         If Id <> 0 Then
             'Solo ejecutar si hay un Id 
             Dim db As New OleDb.OleDbConnection(My.Resources.Cadena_Conexion)
-            Dim dc As New OleDb.OleDbCommand($"UPDATE Compras SET Id_ingrediente='{Id_ingrediente}', Unidades='{Unidades}' WHERE ID={Id} ", db)
+            Dim dc As New OleDb.OleDbCommand($"UPDATE Compras SET Id_ingrediente='{Id_ingrediente}', Unidades='{Unidades}', Total='{Total}' WHERE ID={Id} ", db)
 
             db.Open()
 

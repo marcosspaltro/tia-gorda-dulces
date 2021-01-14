@@ -4,7 +4,7 @@ Public Class frmProductos
     Private clProd As New clsProductos
     Private clRecetas As New clsRecetas
     Private Sub frmProductos_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim vTeclas() As Integer = {46}
+         Dim vTeclas() As Integer = {46}
 
         grdProductos.TeclasManejadas = vTeclas
         Cargar_LST()

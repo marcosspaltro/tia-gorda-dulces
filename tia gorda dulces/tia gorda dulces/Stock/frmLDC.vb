@@ -40,19 +40,19 @@
             Dim vId As Integer = grdldc.Texto(f, grdldc.ColIndex("Id"))
             Dim vId_ingrediente As Integer = .Texto(f, .ColIndex("Id_ingrediente"))
             Dim vUnidades As Integer = .Texto(f, .ColIndex("Unidades"))
-
+            Dim vValor As Integer = .Texto(f, .ColIndex("precioxunidad"))
+            Dim vTotal As Integer = vUnidades * vValor
             Select Case c
 
                 Case .ColIndex("Id_Ingrediente")
                     If .EsUltimaF Then
                         .Texto(f, c) = a
-                        clLdc.Agregar(a, vUnidades)
+                        clLdc.Agregar(a, vUnidades, vTotal)
                         Cargar_LST()
                         .ActivarCelda(f, .ColIndex("Unidades"))
-                        .AgregarFila()
                     Else
                         .Texto(f, c) = a
-                        clLdc.Editar(vId, a, vUnidades)
+                        clLdc.Editar(vId, a, vUnidades, vTotal)
                         .ActivarCelda(f + 1, c)
                     End If
 
@@ -65,13 +65,10 @@
                             If .Texto(f, .ColIndex("Id_Ingrediente")) = "" Then
                                 .ActivarCelda(f, .ColIndex("Id_Ingrediente"))
                             Else
-                                clLdc.Agregar(vId_ingrediente, a)
-                                grdldc.Texto(f, grdldc.ColIndex("Id")) = clLdc.Max_Id
-                                .AgregarFila()
-                                .ActivarCelda(f + 1, .ColIndex("Id_Ingrediente"))
+
                             End If
                         Else
-                            clLdc.Editar(vId, vId_ingrediente, a)
+                            clLdc.Editar(vId, vId_ingrediente, a, vTotal)
                             Cargar_LST()
                             .ActivarCelda(f + 1, c)
                         End If
@@ -91,8 +88,6 @@
                         grdldc.BorrarFila()
                     End If
                 End If
-            Case 32
-                'Barra Espaciadora
         End Select
     End Sub
 
@@ -115,7 +110,9 @@
             grdldc.Texto(f, grdldc.ColIndex("Unidades")) = "0"
             Dim vId_ingrediente As Integer = grdldc.Texto(f, grdldc.ColIndex("Id_ingrediente"))
             Dim vUnidades As Integer = grdldc.Texto(grdldc.Filas.Count - 1, grdldc.ColIndex("Unidades"))
-            clLdc.Agregar(vId_ingrediente, vUnidades)
+            Dim vValor As Integer = grdldc.Texto(f, grdldc.ColIndex("precioxunidad"))
+            Dim vTotal As Integer = vUnidades * vValor
+            clLdc.Agregar(vId_ingrediente, vUnidades, vTotal)
             grdldc.AgregarFila()
             lstLdc.SelectedIndex = -1
             Cargar_LST()
